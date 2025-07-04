@@ -1,0 +1,144 @@
+  #CONFIG           {AUTO TAB}  {5000}
+#CONFIG           {BUFFER SIZE}  {10000}
+#CONFIG           {CHARSET}  {UTF-8}
+#CONFIG           {COLOR MODE}  {TRUE}
+#CONFIG           {COLOR PATCH}  {OFF}
+#CONFIG           {COMMAND COLOR}  {\e[0;37m}
+#CONFIG           {COMMAND ECHO}  {ON}
+#CONFIG           {CONNECT RETRY}  {0.0}
+#CONFIG           {HISTORY SIZE}  {1000}
+#CONFIG           {LOG MODE}  {RAW}
+#CONFIG           {MOUSE TRACKING}  {ON}
+#CONFIG           {PACKET PATCH}  {AUTO OFF}
+#CONFIG           {RANDOM SEED}  {3249040914}
+#CONFIG           {REPEAT CHAR}  {!}
+#CONFIG           {REPEAT ENTER}  {OFF}
+#CONFIG           {SCREEN READER}  {OFF}
+#CONFIG           {SCROLL LOCK}  {ON}
+#CONFIG           {SPEEDWALK}  {ON}
+#CONFIG           {TAB WIDTH}  {8}
+#CONFIG           {TELNET}  {ON}
+#CONFIG           {TINTIN CHAR}  {#}
+#CONFIG           {VERBATIM}  {OFF}
+#CONFIG           {VERBATIM CHAR}  {\}
+#CONFIG           {VERBOSE}  {OFF}
+#CONFIG           {WORDWRAP}  {ON}
+
+#PATHDIR          {d}  {u}  {32}
+#PATHDIR          {e}  {w}  {2}
+#PATHDIR          {n}  {s}  {1}
+#PATHDIR          {ne}  {sw}  {3}
+#PATHDIR          {nw}  {se}  {9}
+#PATHDIR          {s}  {n}  {4}
+#PATHDIR          {se}  {nw}  {6}
+#PATHDIR          {sw}  {ne}  {12}
+#PATHDIR          {u}  {d}  {16}
+#PATHDIR          {w}  {e}  {8}
+
+#split
+
+#ses discworld discworld.starturtle.net 4242;Adassin;Adam2005-
+
+#action {Throw the other copy out?} {#send y} 
+
+#action {Tenebris the chestnut horse seems to get bored of following you and wanders off.} {#send lsay Arise, Tenebris!} 
+
+#action {gallops in from} {#send lead my horse} 
+
+#action {There is a sudden white flash.  Your magical shield has broken.} {#bell}
+
+#action {tells you} {#bell}
+#action {asks you} {#bell}
+
+#split 10 1
+
+#var {chatline} {5}
+
+#action {[%1] %2: %3} {
+  #if {"%3" == "{yoAda}" | "%3" == "{yoada}" | "%3" == "{Yoada}" | "%3" == "{YoAda}"}
+    {
+      #show {<acf>%2} {5} {100} ; #bell
+    }
+
+}
+
+#macro {\eOP} {#show {<000>■■■■■■■■} {5} {100}}
+
+#macro {1} {southwest}
+#macro {2} {south}
+#macro {3} {southeast}
+#macro {4} {west}
+#macro {5} {}       // or pause, center
+#macro {6} {east}
+#macro {7} {northwest}
+#macro {8} {north}
+#macro {9} {northeast}
+
+#macro {\eOQ} {smile}
+
+#ticker {idlebell} {#bell ring ; #show {idle} {5} {100}} {270}
+
+#alias {ne} {northeast}
+#alias {nw} {northwest}
+#alias {se} {southeast}
+#alias {sw} {southwest}
+#alias {x} {map door text}
+
+#alias {sb} {score brief}
+#alias {ha} {health all}
+#alias clw {
+  #if {"%0" == ""} {
+    perform cure light wounds on me
+  } {
+    perform cure light wounds on %0
+  }
+}
+#alias cad {condition all damaged}
+#alias {ba} {take big_coins from corpses ; bury corpses & bits}
+#alias {glon} {palm black leather gloves from swag bag ; wear black leather gloves}
+#alias {glof} {remove black leather gloves ; slip black leather gloves into swag bag}
+#alias {lon} {palm yellow stone ring from swag bag ; wear yellow stone ring}
+#alias {lof} {remove yellow stone ring ; slip yellow stone ring into swag bag}
+#alias {gm} {retrieve money from my horse}
+#alias {pm} {stash money in my horse}
+#alias {dfix} {retrieve money from my horse ; fix damaged dagger ; fix damaged dagger ; fix damaged dagger ; fix damaged dagger ; stash money in my horse}
+#alias {sm} {take papers except permits from swag bag ; take scrolls from packets ; put scrolls into swag bag ; drop papers & packets}
+
+#alias {ch} {lsay Tenebris, Arise!}
+#alias {lh} {lead my horse}
+#alias {mh} {mount my horse}
+#alias {dh} {retrieve towel from my horse ; dry my horse with towel ; wring towel dry ; dry my horse with towel ; wring towel dry ; dry my horse with towel ; wring towel dry ; stash towel in my horse}
+#alias {ah} {assess my horse}
+#alias {aht} {assess my horse traits}
+#alias {ahh} {assess my horse health}
+#alias {grh} {take all from my horse ; palm grooming kit from saddlebags ; groom my horse ; slip grooming kit into saddlebags ; dress my horse with all}
+
+#alias {gj %1} {group join %1}
+#alias {ga %1} {group assist %1}
+#alias {gs %1} {group say %1}
+#alias {ge %1} {group emote %1}
+#alias {gf} {group unfollow all ; group follow all}
+#alias {gh} {group history}
+
+#alias {jpct %1} {take %1 & Jogloran's Portal of Cheaper Travel scroll from swag bag ; cast Jogloran's Portal of Cheaper Travel from scroll on %1 ; put %1 & papers in swag bag ; open door ; look enter door}
+#alias {tpa %1} {take ironwood buckler & Transcendent Pneumatic Alleviator scroll from swag bag ; cast Transcendent Pneumatic Alleviator from scroll on %1 ; put ironwood buckler & papers in swag bag ; open door ; look enter door}
+#alias {cball %1} {retrieve crystall ball from my horse ; scry %1 with crystal ball ; stash crystal ball in my horse}
+#alias {sc} {count Jogloran's Portal of Cheaper Travel scrolls in swag bag ; count Transcendent Pneumatic Alleviator scrolls in swag bag}
+
+#alias q {
+  #if {"%0" == ""} {
+    stab target with held dagger
+  } {
+    stab %0 with held dagger
+  }
+}
+#alias f {
+  #if {"%0" == ""} {
+    stab at target with held dagger
+  } {
+    stab at %0 with held dagger
+  }
+}
+#alias {b} {backstab %0}
+
+
