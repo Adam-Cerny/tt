@@ -1,4 +1,4 @@
-  #CONFIG           {AUTO TAB}  {5000}
+#CONFIG           {AUTO TAB}  {5000}
 #CONFIG           {BUFFER SIZE}  {10000}
 #CONFIG           {CHARSET}  {UTF-8}
 #CONFIG           {COLOR MODE}  {TRUE}
